@@ -1,0 +1,15 @@
+{
+  "name": "cpu_module",
+  "version": "0.0.1",
+  "description": "this module reports block's CPU info to the dashboard",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:claudiuo/ninjablocks.git/cpu_module"
+  },
+  "author": "Nick Clark (this version: claudiu)",
+  "license": "BSD"
+}
