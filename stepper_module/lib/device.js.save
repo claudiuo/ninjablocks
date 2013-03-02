@@ -33,6 +33,7 @@ var StepperMotor = function(pin1, pin2, pin3, pin4, delay) {
 
 StepperMotor.prototype._exportPins = function(done) {
   var self = this;
+
   async.parallel([
     function(done) { gpio.open(self._pin1, done); },
     function(done) { gpio.open(self._pin2, done); },
@@ -184,6 +185,6 @@ Device.prototype.write = function(data) {
   console.log(data);
   stepperMotor.forward(200, function(err) {
     if(err) console.log(err);
-    stepperMotor.stop();
+//    stepperMotor.stop();
   });
 };
