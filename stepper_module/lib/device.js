@@ -1,6 +1,7 @@
 
 var stream = require('stream')
-  , util = require('util');
+  , util = require('util')
+  , stepperMotor = require('pi-stepper-motor');
 
 // Give our module a stream interface
 util.inherits(Device,stream);
