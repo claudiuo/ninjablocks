@@ -32,23 +32,23 @@ var StepperMotor = function(pin1, pin2, pin3, pin4, delay) {
 };
 
 StepperMotor.prototype._exportPins = function(done) {
-        var self = this;
-        async.parallel([
-                function(done) { gpio.open(self._pin1, done); },
-                function(done) { gpio.open(self._pin2, done); },
-                function(done) { gpio.open(self._pin3, done); },
-                function(done) { gpio.open(self._pin4, done); }
-        ], done);
+  var self = this;
+  async.parallel([
+    function(done) { gpio.open(self._pin1, done); },
+    function(done) { gpio.open(self._pin2, done); },
+    function(done) { gpio.open(self._pin3, done); },
+    function(done) { gpio.open(self._pin4, done); }
+  ], done);
 }
 
 StepperMotor.prototype._unexportPins = function(done) {
-        var self = this;
-        async.parallel([
-                function(done) { gpio.close(self._pin1, done); },
-                function(done) { gpio.close(self._pin2, done); },
-                function(done) { gpio.close(self._pin3, done); },
-                function(done) { gpio.close(self._pin4, done); }
-        ], done);
+  var self = this;
+  async.parallel([
+    function(done) { gpio.close(self._pin1, done); },
+    function(done) { gpio.close(self._pin2, done); },
+    function(done) { gpio.close(self._pin3, done); },
+    function(done) { gpio.close(self._pin4, done); }
+  ], done);
 }
 
 StepperMotor.prototype.forward = function(steps, done) {
