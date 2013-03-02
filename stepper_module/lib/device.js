@@ -52,82 +52,82 @@ StepperMotor.prototype._unexportPins = function(done) {
 }
 
 StepperMotor.prototype.forward = function(steps, done) {
-        var self = this;
-        this._exportPins(function(err) {
-                if(err) console.log(err);
-                for(var i = 0; i < steps; i++) {
-                	async.parallel([
-                	        function(done) { gpio.write(self._pin1, 1, done); },
-                	        function(done) { gpio.write(self._pin2, 0, done); },
-                	        function(done) { gpio.write(self._pin3, 1, done); },
-                	        function(done) { gpio.write(self._pin4, 0, done); }
-                	], done);
-                	sleep(self._delay);
-                	async.parallel([
-                	        function(done) { gpio.write(self._pin1, 0, done); },
-                	        function(done) { gpio.write(self._pin2, 1, done); },
-                	        function(done) { gpio.write(self._pin3, 1, done); },
-                	        function(done) { gpio.write(self._pin4, 0, done); }
-                	], done);
-                	sleep(self._delay);
-                	async.parallel([
-                	        function(done) { gpio.write(self._pin1, 0, done); },
-                	        function(done) { gpio.write(self._pin2, 1, done); },
-                	        function(done) { gpio.write(self._pin3, 0, done); },
-                	        function(done) { gpio.write(self._pin4, 1, done); }
-                	], done);
-                	sleep(self._delay);
-                	async.parallel([
-                	        function(done) { gpio.write(self._pin1, 1, done); },
-                	        function(done) { gpio.write(self._pin2, 0, done); },
-                	        function(done) { gpio.write(self._pin3, 0, done); },
-                	        function(done) { gpio.write(self._pin4, 1, done); }
-                	], done);
-                	sleep(self._delay);
-				}
-        });
+  var self = this;
+  this._exportPins(function(err) {
+    if(err) console.log(err);
+    for(var i = 0; i < steps; i++) {
+      async.parallel([
+        function(done) { gpio.write(self._pin1, 1, done); },
+        function(done) { gpio.write(self._pin2, 0, done); },
+        function(done) { gpio.write(self._pin3, 1, done); },
+        function(done) { gpio.write(self._pin4, 0, done); }
+      ], done);
+      sleep(self._delay);
+      async.parallel([
+        function(done) { gpio.write(self._pin1 0, done); },
+        function(done) { gpio.write(self._pin2, 1, done); },
+        function(done) { gpio.write(self._pin3, 1, done); },
+        function(done) { gpio.write(self._pin4, 0, done); }
+      ], done);
+      sleep(self._delay);
+      async.parallel([
+        function(done) { gpio.write(self._pin1, 0, done); },
+        function(done) { gpio.write(self._pin2, 1, done); },
+        function(done) { gpio.write(self._pin3, 0, done); },
+        function(done) { gpio.write(self._pin4, 1, done); }
+      ], done);
+      sleep(self._delay);
+      async.parallel([
+        function(done) { gpio.write(self._pin1, 1, done); },
+        function(done) { gpio.write(self._pin2, 0, done); },
+        function(done) { gpio.write(self._pin3, 0, done); },
+        function(done) { gpio.write(self._pin4, 1, done); }
+      ], done);
+      sleep(self._delay);
+    }
+  });
 }
 
 StepperMotor.prototype.backward = function(steps, done) {
-        var self = this;
-        this._exportPins(function(err) {
-                if(err) console.log(err);
-                for(var i = 0; i < steps; i++) {
-                	async.parallel([
-                	        function(done) { gpio.write(self._pin1, 1, done); },
-                	        function(done) { gpio.write(self._pin2, 0, done); },
-                	        function(done) { gpio.write(self._pin3, 0, done); },
-                	        function(done) { gpio.write(self._pin4, 1, done); }
-                	], done);
-                	sleep(self._delay);
-                	async.parallel([
-                	        function(done) { gpio.write(self._pin1, 0, done); },
-                	        function(done) { gpio.write(self._pin2, 1, done); },
-                	        function(done) { gpio.write(self._pin3, 0, done); },
-                	        function(done) { gpio.write(self._pin4, 1, done); }
-                	], done);
-                	sleep(self._delay);
-                	async.parallel([
-                	        function(done) { gpio.write(self._pin1, 0, done); },
-                	        function(done) { gpio.write(self._pin2, 1, done); },
-                	        function(done) { gpio.write(self._pin3, 1, done); },
-                	        function(done) { gpio.write(self._pin4, 0, done); }
-                	], done);
-                	sleep(self._delay);
-                	async.parallel([
-                	        function(done) { gpio.write(self._pin1, 1, done); },
-                	        function(done) { gpio.write(self._pin2, 0, done); },
-                	        function(done) { gpio.write(self._pin3, 1, done); },
-                	        function(done) { gpio.write(self._pin4, 0, done); }
-                	], done);
-                	sleep(self._delay);
-				}
-        });
+  var self = this;
+  this._exportPins(function(err) {
+    if(err) console.log(err);
+    for(var i = 0; i < steps; i++) {
+      async.parallel([
+        function(done) { gpio.write(self._pin1, 1, done); },
+        function(done) { gpio.write(self._pin2, 0, done); },
+        function(done) { gpio.write(self._pin3, 0, done); },
+        function(done) { gpio.write(self._pin4, 1, done); }
+      ], done);
+      sleep(self._delay);
+      async.parallel([
+        function(done) { gpio.write(self._pin1, 0, done); },
+        function(done) { gpio.write(self._pin2, 1, done); },
+        function(done) { gpio.write(self._pin3, 0, done); },
+        function(done) { gpio.write(self._pin4, 1, done); }
+      ], done);
+      sleep(self._delay);
+      async.parallel([
+        function(done) { gpio.write(self._pin1, 0, done); },
+        function(done) { gpio.write(self._pin2, 1, done); },
+        function(done) { gpio.write(self._pin3, 1, done); },
+        function(done) { gpio.write(self._pin4, 0, done); }
+      ], done);
+      sleep(self._delay);
+      async.parallel([
+        function(done) { gpio.write(self._pin1, 1, done); },
+        function(done) { gpio.write(self._pin2, 0, done); },
+        function(done) { gpio.write(self._pin3, 1, done); },
+        function(done) { gpio.write(self._pin4, 0, done); }
+      ], done);
+      sleep(self._delay);
+    }
+  });
 }
 
 StepperMotor.prototype.stop = function(done) {
-        var self = this;
-        this._unexportPins(done);
+  var self = this;
+  this._unexportPins(done);
 };
 
 //["forward", "left", "start"].forEach(function(key) { Motor.prototype[key] = Motor.prototype.clockwise; });
@@ -137,7 +137,7 @@ StepperMotor.prototype.stop = function(done) {
 
 //module.exports = StepperMotor;
 
-var stepperMotor = new StepperMotor(7,11,23,24,5);
+var stepperMotor = new StepperMotor(7,11,16,18,5);
 
 
 /**
@@ -168,7 +168,6 @@ function Device() {
   this.D = 239; // 2000 is a generic actuator stepper motor Ninja Blocks device
 
   process.nextTick(function() {
-
     self.emit('data','Hello World');
   });
 };
