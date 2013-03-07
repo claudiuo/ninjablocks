@@ -50,9 +50,11 @@ function Device() {
  */
 Device.prototype.write = function(data) {
 
+  var self = this;
+
   // I'm being actuated with data!
   console.log(data);
-  child = exec('sudo python stepper.py 5 100',
+  child = exec('sudo python stepper.py 5 200',
     function(error, stdout, stderr) {
       stdout.replace(/(\n|\r|\r\n)$/, '');
       console.log("python result " + stdout);
