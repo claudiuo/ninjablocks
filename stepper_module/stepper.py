@@ -2,10 +2,9 @@ import RPi.GPIO as GPIO
 import time
 import sys
 
-print "\n".join(sys.argv[1:]) 
-
-delay = sys.argv[1]
-steps = sys.argv[2]
+#print "\n".join(sys.argv[1:]) 
+#delay = sys.argv[1]
+#steps = sys.argv[2]
 
 GPIO.setmode(GPIO.BCM)
  
@@ -52,13 +51,6 @@ def setStep(w1, w2, w3, w4):
   GPIO.output(coil_B_1_pin, w3)
   GPIO.output(coil_B_2_pin, w4)
  
-#while True:
-#  delay = raw_input("Delay between steps (milliseconds)?")
-#  steps = raw_input("How many steps forward? ")
-#  forward(int(delay) / 1000.0, int(steps))
-#  steps = raw_input("How many steps backwards? ")
-#  backwards(int(delay) / 1000.0, int(steps))
-
 if(int(steps) > 0):
   forward(int(delay) / 1000.0, int(steps))
 else:
