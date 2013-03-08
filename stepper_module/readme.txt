@@ -1,6 +1,6 @@
 This project creates a NinjaBlocks stepper motor actuator that runs on a Raspberry Pi and calls a Python module: stepper.py. It passes 2 params to the Python module:
-- delay between steps in milliseconds - in practice I notice that 2 is the smallest value, I normally use 5
-- number of steps to be executed - if the value is negative, the motor will rotate backwards
+- delay between steps (in milliseconds) - in practice I notice that 2 is the smallest value, I normally use 5;
+- number of steps to be executed (signed int) - if the value is negative, the motor will rotate backwards.
 
 stepper.py is based on Adafruit's tutorial for Raspberry Pi in the adafruit learning system, here: http://learn.adafruit.com/adafruits-raspberry-pi-lesson-10-stepper-motors/software
 
