@@ -151,8 +151,8 @@ void setup(){
 
   NinjaBlock.host = "api.ninja.is";
   NinjaBlock.port = 80;
-  NinjaBlock.nodeID = "ETHERSHIELDBLOCK";  // Name this as you wish
-  NinjaBlock.token = "loMW8WLXjYLNU2Q2UoyKphiEmfLyKrjNaQPUzgajZAU"; // Get yours from https://a.ninja.is/hacking 
+  NinjaBlock.nodeID = "ARDUINOBLOCK";  // Name this as you wish
+  NinjaBlock.token = "YOURTOKEN"; // Get yours from https://a.ninja.is/hacking 
   NinjaBlock.guid = "0";
   NinjaBlock.vendorID=DEFAULT_VENDOR_ID;
   NinjaBlock.deviceID=STEPPER_DEVICE_ID;
