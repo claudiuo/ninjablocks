@@ -71,6 +71,8 @@
 // used to measure the temp only once in a while
 #include <TimedAction.h>
 #include "DHT.h"
+// for dtostrf(FLOAT,WIDTH,PRECISION,BUFFER);
+#include<stdlib.h>
 
 #define DEFAULT_VENDOR_ID 0
 
@@ -79,7 +81,7 @@
 #define STEPPER_DEVICE_ID 239
 #define TEMP_DEVICE_ID 202
 #define TEMP_DHT_DEVICE_ID 9
-#define HUMIDITY_DHT_DEVICE_ID 9
+#define HUMIDITY_DHT_DEVICE_ID 8
 
 // thermistor
 // the value of the 'other' resistor
@@ -118,6 +120,9 @@ int waitTime = 5;	// milliseconds
 byte led = 3;  // Connect the anode (long lead, +ve) of a LED to this pin, and connect that LED's cathode (short lead, -ve) to GND through a 330R-K resistor. 
 
 //boolean isButtonDown = false;
+
+// to be used to send float values as chars to the dashboard
+char tmp[5];
 
 // use a TimedAction for temp measuring so we do it only about every minute
 TimedAction timedAction = TimedAction(60000,measureTempBoth);
@@ -284,6 +289,8 @@ void measureTempHumid() {
     Serial.println(" *C");
 #endif
    
+    // the values coming from the library are floats but all I've seen
+    // as decimals are .00 so they can be sent as ints
     NinjaBlock.deviceID=TEMP_DHT_DEVICE_ID;
     NinjaBlock.send(t);
     delay(300);
@@ -338,6 +345,8 @@ void measureTemp() {
 
   // send the temp value to the server
   NinjaBlock.deviceID=TEMP_DEVICE_ID;
-  NinjaBlock.send(steinhart);
+//  NinjaBlock.send(steinhart);
+  NinjaBlock.send(dtostrf(steinhart,1,1,tmp));
   delay(500);
 }
+

@@ -6,7 +6,7 @@ This is a small project I put together to see how an Arduino with Ethernet shiel
 - added a DHT humidity device (using DHT11 on pin 2)
 - added a stepper motor actuator.
 
-The temperature and humidity are read and sent once about every minute (using a TimedAction for this).
+The temperature and humidity are read and sent once about every minute (using a TimedAction for this). The values coming from the DHT sensor library are both float but in fact I've never seen anything but .00 as the decimal value so using NinjaBlock.send(int) function is OK. On the other hand, the temperature calculated using the thermistor has decimal digits so instead I am using the send(* chr) function passing a string with one decimal place. Not a big deal but I really wanted to see if sending a char string to a dashboard widget expecting numbers work and indeed it works great.
 
 Note: I noticed that some times the command for the stepper motor (sent via curl on command line) doesn't register in the code for some reason. It would be nice to figure out why but even if not working perfectly, I don't plan to use the stepper for anything critical so a few commands can be lost now and then.
 
