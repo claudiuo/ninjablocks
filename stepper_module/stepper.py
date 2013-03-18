@@ -2,9 +2,10 @@ import RPi.GPIO as GPIO
 import time
 import sys
 
-#print "\n".join(sys.argv[1:]) 
-#delay = sys.argv[1]
-#steps = sys.argv[2]
+#print "\n".join(sys.argv[1:])
+delay = sys.argv[1]
+steps = sys.argv[2]
+print "\n".join(sys.argv[2:])
 
 GPIO.setmode(GPIO.BCM)
  
