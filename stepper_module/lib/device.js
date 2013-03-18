@@ -54,7 +54,11 @@ Device.prototype.write = function(data) {
 
   // I'm being actuated with data!
   console.log(data);
-  child = exec('sudo python stepper.py 5 200',
+  var steps = 200;
+  if(!isNaN(data)) {
+	steps = data;
+  }
+  child = exec('sudo python stepper.py 5 '+steps,
     function(error, stdout, stderr) {
       stdout.replace(/(\n|\r|\r\n)$/, '');
       console.log("python result " + stdout);
