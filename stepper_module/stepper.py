@@ -5,6 +5,7 @@ import sys
 #print "\n".join(sys.argv[1:])
 delay = sys.argv[1]
 steps = sys.argv[2]
+# print this so the script returns the steps value (so dashboard is updated)
 print "\n".join(sys.argv[2:])
 
 GPIO.setmode(GPIO.BCM)
