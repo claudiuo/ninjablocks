@@ -13,3 +13,5 @@ Note: I noticed that sometimes the command for the stepper motor (sent via curl 
 Another thing I noticed is that an actuator (the stepper motor in my case) doesn't show on the dashboard until it sends something. At first I thought that I don't need to send anything since it is not a sensor but then I noticed the original code was sending a '000000' for the LED block so I did the same for the stepper and it showed up on the dashboard right away. In hindsight I guess it makes perfect sense to send something first so the dashboard knows about it but I thought I should mention it in case someone else runs into the same issue.
 
 I will add more devices in the code as long as I still have enough memory and free pins on the Arduino. At this time, most of the digital pins are used but I still have the analog ones available. Also, the size of the program is about 23k, still have room for a few kb.
+
+Update: added RGB module.
