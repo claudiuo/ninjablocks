@@ -77,6 +77,7 @@
 #define DEFAULT_VENDOR_ID 0
 
 #define LED_DEVICE_ID 1000
+#define NINAS_EYES_LED_DEVICE_ID 1007
 //#define BUTTON_DEVICE_ID 5
 #define STEPPER_DEVICE_ID 239
 #define TEMP_DEVICE_ID 202
@@ -117,7 +118,15 @@ int stepPins[] = {9,8,7,4};
 int waitTime = 5;	// milliseconds
 
 //byte button = 5; // Jumper this to ground to press the "button"
-byte led = 3;  // Connect the anode (long lead, +ve) of a LED to this pin, and connect that LED's cathode (short lead, -ve) to GND through a 330R-K resistor. 
+
+// used for the RGB led with PWM
+int redLed = 3;   
+int greenLed = 5;
+int blueLed = 6;
+unsigned long ul;
+
+// for stepper motor
+unsigned int ui;
 
 //boolean isButtonDown = false;
 
@@ -129,7 +138,15 @@ TimedAction timedAction = TimedAction(60000,measureTempBoth);
 
 void setup(){
 
-  pinMode(led, OUTPUT);  
+  // set all color leds as output pins
+  pinMode(redLed, OUTPUT);
+  pinMode(greenLed, OUTPUT);
+  pinMode(blueLed, OUTPUT);
+
+  // just set all leds to high so that we see they are working well
+  digitalWrite(redLed, HIGH);
+  digitalWrite(greenLed, HIGH);
+  digitalWrite(blueLed, HIGH);
 
   // Set all stepper motor pins as output
   for (int thisPin = 0; thisPin < 4; thisPin++)  {
@@ -171,6 +188,24 @@ void setup(){
 #endif
   NinjaBlock.send("000000"); // doesn't really matter what we send, this is an actuator
 
+  // init the LED device: using Nina's Eyes, the widget seems to have more colors than the standard LED_DEVICE
+#if ENABLE_SERIAL 
+  Serial.println("Creating NINAS_EYES_LED_DEVICE_ID");
+#endif
+  NinjaBlock.deviceID=NINAS_EYES_LED_DEVICE_ID;
+  NinjaBlock.send("000000"); // doesn't really matter what we send, this is an actuator
+  
+  // init the standard LED device: the widget has only 8 colors
+#if ENABLE_SERIAL 
+  Serial.println("Creating LED_DEVICE_ID");
+#endif
+  NinjaBlock.deviceID=LED_DEVICE_ID;
+  NinjaBlock.send("000000"); // doesn't really matter what we send, this is an actuator
+
+  // turn all leds off to know setup is done
+  digitalWrite(redLed, LOW);
+  digitalWrite(greenLed, LOW);
+  digitalWrite(blueLed, LOW);
 }
 
 void loop() {
@@ -192,30 +227,35 @@ void loop() {
       // Serial.print("strDATA=");
       // Serial.println(NinjaBlock.strDATA);
 
-      if (NinjaBlock.intDID == LED_DEVICE_ID) {
+      // for now, actuate both LED devices with the same code; I may change this in the future
+      if (NinjaBlock.intDID == LED_DEVICE_ID || NinjaBlock.intDID == NINAS_EYES_LED_DEVICE_ID) {
 
-        // FFFFFF is "white" in the RGB widget we identified as
-        if (strcmp(NinjaBlock.strDATA,"FFFFFF") == 0) { 
+        ul = strtoul(NinjaBlock.strDATA, NULL, 16);
 #if ENABLE_SERIAL
-          Serial.println("LED ON");
+        Serial.print("strDATA=");
+        Serial.println(NinjaBlock.strDATA);
+        Serial.print("RGB value=");
+        Serial.println(ul);
 #endif
-          digitalWrite(led, HIGH); 
-        } 
-        else if (strcmp(NinjaBlock.strDATA,"000000") == 0) {
-#if ENABLE_SERIAL
-          Serial.println("LED OFF");
-#endif
-          digitalWrite(led, LOW); 
-        }
+        analogWrite(redLed, (ul & 0xFF0000) >> 16);
+        analogWrite(greenLed, (ul & 0x00FF00) >> 8);
+        analogWrite(blueLed, (ul & 0x0000FF));
 
       } 
       else if (NinjaBlock.intDID == STEPPER_DEVICE_ID) {
 
         // do something with the stepper motor
 #if ENABLE_SERIAL
-        Serial.println("STEPPER MOTOR ON");
+        Serial.println("STEPPER MOTOR RECEIVING COMMAND");
 #endif
-        forward(20);
+        ui = atoi(NinjaBlock.strDATA);
+#if ENABLE_SERIAL
+        Serial.print("strDATA=");
+        Serial.println(NinjaBlock.strDATA);
+        Serial.print("stepper value=");
+        Serial.println(ui);
+#endif
+        forward(ui);
         delay(10*waitTime);
 
       }
