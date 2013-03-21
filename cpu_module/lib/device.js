@@ -40,6 +40,8 @@ function Device() {
   process.nextTick(function() {
     setInterval(function() {
 
+	  // for windows use
+      //child = exec('@for /f "skip=1" %p in (\'wmic cpu get loadpercentage\') do @echo %p%',
       child = exec('top -b -n1 | grep Cpu | awk \'{print $2}\'',
       function(error, stdout, stderr) {
        stdout.replace(/(\n|\r|\r\n)$/, '');
@@ -47,7 +49,7 @@ function Device() {
        self.emit('data', stdout);
       });
 
-    }, 1000);
+    }, 30000);
   });
 };
 
