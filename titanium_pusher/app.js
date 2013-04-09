@@ -41,7 +41,7 @@ var handleEvent = function(e) {
   Ti.API.warn("ATAO event fired");
 
   var label = Ti.UI.createLabel({
-    text: "channel:" + e.channel + " event: " + e.name,
+    text: " event: " + e.name,
     top: 3,
     left: 10,
     height: '12',
@@ -52,7 +52,7 @@ var handleEvent = function(e) {
     text: JSON.stringify(e.data),
     top: 15,
     left: 10,
-    height: '15',
+    height: '20',
     font: {fontSize:8}
   });
 
@@ -61,10 +61,10 @@ var handleEvent = function(e) {
 
   var daDataLabel = Ti.UI.createLabel({
     text: JSON.stringify(incomingValue),
-    top: 30,
+    top: 35,
     left: 10,
     height: '15',
-    font: {fontSize:8}
+    font: {fontSize:12}
   });
 
   var tableViewRow = Ti.UI.createTableViewRow({});
