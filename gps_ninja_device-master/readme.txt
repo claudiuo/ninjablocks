@@ -58,12 +58,14 @@ Retrieve the client_id and client_secret from the google app registration and up
 
 Run the script "node gps_ninja_authenticate.js" and assuming the deities are shining on you you will receive the refresh_token and which along with client_id and client_secret and update the gps_ninja.js script.
 
-3. Update the gps_ninja.js script 
-refresh_token, client_id, client_secret.
+3. Update the gps_ninja.js script refresh_token, client_id, client_secret.
 
-(on github it says: Edit gpslatiude.js and update refresh_token; client_id;client_secret)
+NOTE: on github it says: Edit gpslatiude.js and update refresh_token; client_id; client_secret - indeed, it looks like all these values are in this script.
 
-You will need also to update your latitude and longitude of your fixed point, ninja device URL, ninja access token.
+You will need also to update your:
+- latitude and longitude of your fixed point (these are in the gpsninja.js script)
+- ninja device URL (NOT SURE in which file)
+- ninja access token (NOT SURE in which file).
 
 The gps_ninja.js script simply calls the latitude API every 30 secs and retrieves the best current location. If the location has changed since the last call it updates the ninja device with a colour based on distance from the point. Adjust these setting to suit your setup. Given my experience at home the iPhone moving around the house can change my location by up to 30 meters. That is why I have my home colour blue configured at 50. Have a play
 
@@ -71,7 +73,7 @@ The gps_ninja.js script simply calls the latitude API every 30 secs and retrieve
 
 All going well when you run the script it will all work. It will log to the console any time that the location changes and the distance from your fixed point.
 
-(I think the reason it says Temperature on github comments is because of this added comment on the forum: Changed the standalone script to be a device of type temperature (device ID 9). Device simply passes back the distance to the fixed point to the temperature object. Then you can use the rules engine to drive the lights or coffee pots etc.)
+NOTE: I think the reason it says Temperature on github comments is because of this added comment on the forum: Changed the standalone script to be a device of type temperature (device ID 9). Device simply passes back the distance to the fixed point to the temperature object. Then you can use the rules engine to drive the lights or coffee pots etc.
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
