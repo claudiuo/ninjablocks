@@ -75,9 +75,10 @@ All going well when you run the script it will all work. It will log to the cons
 
 NOTE: I think the reason it says Temperature on github comments is because of this added comment on the forum: Changed the standalone script to be a device of type temperature (device ID 9). Device simply passes back the distance to the fixed point to the temperature object. Then you can use the rules engine to drive the lights or coffee pots etc.
 
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-My codes are not saved in this repo since they are private (*see info for GPS app.txt).
+NOTE: While trying to make the code work for me, I noticed that querystring module was not installed so I also did: npm install querystring (but this is probably not needed).
+
 
  
 
